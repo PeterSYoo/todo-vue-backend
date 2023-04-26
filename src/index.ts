@@ -1,14 +1,19 @@
-import http from 'http';
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import dotenv from 'dotenv';
+dotenv.config();
+import morgan from 'morgan';
 
-export const server = http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.end(
-    JSON.stringify({
-      data: 'It Works!',
-    })
-  );
+const app = express();
+app.use(bodyParser.json());
+app.use(cors());
+app.use(morgan('dev'));
+
+app.get('/', (req, res) => {
+  res.send(`Hello, World! from ${process.env.PORT}`);
 });
 
-server.listen(3000, () => {
-  console.log('Server running on http://localhost:3000/');
+app.listen(process.env.PORT, () => {
+  console.log(`Server is listening on port ${process.env.PORT}`);
 });
