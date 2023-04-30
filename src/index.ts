@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
-import { userRouter } from './user/routes/userRoutes';
+import { userRouter } from './user/routes/userRouter';
 // ----------------------------------------------------------------------------------- ***
 
 dotenv.config(); // Load environment variables.
